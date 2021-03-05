@@ -26,6 +26,7 @@ public class Tweet {
         tweet.createdAt = jsonObject.getString("created_at");
         tweet.timeStamp = TimeFormatter.getTimeDifference(tweet.createdAt);
         tweet.id = jsonObject.getLong("id");
+
         tweet.user = User.fromJson(jsonObject.getJSONObject("user"));
 
         return tweet;
