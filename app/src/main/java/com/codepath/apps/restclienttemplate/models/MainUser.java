@@ -4,12 +4,17 @@ import android.util.Log;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.parceler.Parcel;
 
+@Parcel
 public class MainUser {
 
     public String userName;
     public String userHandle;
     public String userImageUrl;
+
+    // Empty constructor for Parceler library.
+    public MainUser() {};
 
     public static MainUser fromUserDataJson(JSONObject userObject) throws JSONException {
         MainUser mainUser = new MainUser();

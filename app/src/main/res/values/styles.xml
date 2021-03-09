@@ -1,5 +1,7 @@
 <resources>
 
+    <color name="tweet">#03A9F4</color>
+
     <style name="AppBaseTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!--
             Theme customizations available in newer API levels can go in

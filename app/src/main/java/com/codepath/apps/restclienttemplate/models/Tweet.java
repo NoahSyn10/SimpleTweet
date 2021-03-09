@@ -7,11 +7,13 @@ import com.codepath.apps.restclienttemplate.TimeFormatter;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.parceler.Parcel;
 
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
+@Parcel
 public class Tweet {
 
     public String body;
@@ -20,7 +22,22 @@ public class Tweet {
     public long id;
     public User user;
 
+    // Empty constructor for Parceler library.
+    public Tweet() {};
+
     public static Tweet fromJson(JSONObject jsonObject) throws JSONException {
+        Tweet tweet = new Tweet();
+        tweet.body = jsonObject.getString("full_text");
+        tweet.createdAt = jsonObject.getString("created_at");
+        tweet.timeStamp = TimeFormatter.getTimeDifference(tweet.createdAt);
+        tweet.id = jsonObject.getLong("id");
+
+        tweet.user = User.fromJson(jsonObject.getJSONObject("user"));
+
+        return tweet;
+    }
+
+    public static Tweet fromJsonTrunct(JSONObject jsonObject) throws JSONException {
         Tweet tweet = new Tweet();
         tweet.body = jsonObject.getString("text");
         tweet.createdAt = jsonObject.getString("created_at");
